@@ -47,7 +47,13 @@ function capitalize (word) {
   return word.charAt(0).toUpperCase() + word.substring(1);
 }
 
-// inspired from - http://brandontilley.com/2014/09/24/custom-react-components-and-the-valuelink-property.html
+function clone(src) {
+  return Object.keys(src).reduce(function (dest, k) {
+    dest[k] = src[k];
+    return dest;
+  }, {});
+}
+
 var PropLinkSupportMixin = {
 
   getPropLink: function (propName) {
@@ -82,13 +88,14 @@ var NewContactForm = React.createClass({
 
   getInitialState: function () {
     return {
+      id: undefined,
       name: '',
       phone: ''
     };
   },
 
   handleSave: function () {
-    this.props.onSave(this.state);
+    this.props.onSave(clone(this.state));
     this.setState(this.getInitialState());
   },
 
