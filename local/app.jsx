@@ -47,6 +47,7 @@ function capitalize (word) {
   return word.charAt(0).toUpperCase() + word.substring(1);
 }
 
+// inspired from - http://brandontilley.com/2014/09/24/custom-react-components-and-the-valuelink-property.html
 var PropLinkSupportMixin = {
 
   getPropLink: function (propName) {
